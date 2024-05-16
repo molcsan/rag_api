@@ -6,11 +6,15 @@ ENV POSTGRES_USER=myuser
 ENV POSTGRES_PASSWORD=mypassword
 
 VOLUME /var/lib/postgresql/data
-EXPOSE 5432
+EXPOSE 5433:5432
 
 FROM python:3.10 as fastapi
 
 WORKDIR /app
+
+RUN apt-get update \
+    && apt-get install -y pandoc netcat-openbsd \
+    && rm -rf /var/lib/apt/lists/*
 
 # Install dependencies
 COPY requirements.txt .
@@ -20,20 +24,4 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY . .
 
 EXPOSE 8000
-CMD ["python", "main.py"]
-
-FROM python:3.10 AS main
-
-WORKDIR /app
-
-# Install pandoc and netcat
-RUN apt-get update \
-    && apt-get install -y pandoc netcat-openbsd \
-    && rm -rf /var/lib/apt/lists/*
-
-COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
-
-COPY . .
-
 CMD ["python", "main.py"]
