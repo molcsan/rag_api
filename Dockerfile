@@ -5,7 +5,7 @@ ENV POSTGRES_DB=mydatabase
 ENV POSTGRES_USER=myuser
 ENV POSTGRES_PASSWORD=mypassword
 
-VOLUME /var/lib/postgresql/data
+#VOLUME /var/lib/postgresql/data
 EXPOSE 5433:5432
 
 FROM python:3.10 as fastapi
