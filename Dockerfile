@@ -8,7 +8,7 @@
 #VOLUME /var/lib/postgresql/data
 #EXPOSE 5433:5432
 
-FROM python:3.10 as fastapi
+FROM python:3.10 as main
 
 WORKDIR /app
 
@@ -23,5 +23,5 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copy application code
 COPY . .
 
-EXPOSE 8000
+EXPOSE 8000:8000
 CMD ["python", "main.py"]
