@@ -1,12 +1,12 @@
 # Dockerfile.db
-FROM ankane/pgvector:latest as db
-
-ENV POSTGRES_DB=mydatabase
-ENV POSTGRES_USER=myuser
-ENV POSTGRES_PASSWORD=mypassword
+#FROM ankane/pgvector:latest as db
+#
+#ENV POSTGRES_DB=mydatabase
+#ENV POSTGRES_USER=myuser
+#ENV POSTGRES_PASSWORD=mypassword
 
 #VOLUME /var/lib/postgresql/data
-EXPOSE 5433:5432
+#EXPOSE 5433:5432
 
 FROM python:3.10 as fastapi
 

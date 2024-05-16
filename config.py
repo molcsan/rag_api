@@ -29,7 +29,7 @@ def get_env_variable(
     return value
 
 
-RAG_HOST = os.getenv("RAG_HOST", "0.0.0.0")
+RAG_HOST = os.getenv("RAG_HOST", "::")
 RAG_PORT = int(os.getenv("RAG_PORT", 8000))
 
 RAG_UPLOAD_DIR = get_env_variable("RAG_UPLOAD_DIR", "./uploads/")
